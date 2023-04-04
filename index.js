@@ -1,8 +1,11 @@
 const fs = require('fs');
+const path = require('path');
 const inquirer = require('inquirer');
+const {shapes, circle, triangle, square} = require('./lib/shapes');
 
 
-const questions = [
+inquirer
+  .prompt([
     {
         type: 'input',
         name: 'text',
@@ -39,13 +42,51 @@ const questions = [
         //     //check for valid shape name or hex input
         // }
     }
-]
+])
+.then((data) => {
+    let currentShape;
 
-function init() {
-    inquirer.prompt(questions).then((inquirerResponses) => {
-    console.log('Creating Logo');
+    switch (data.shape) {
+        case 'circle':
+            currentShape = new circle(data.text, data.textColor, data.shape, data.shapeColor);
+            break;
+            // break;
+        case 'triangle':
+            currentShape = new triangle(data.text, data.textColor, data.shape, data.shapeColor);
+            break;
+        case 'square':
+            currentShape = new square(data.text, data.textColor, data.shape, data.shapeColor);
+            break;
+    }
+
+    const svgCode = `
+        <svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+
+        ${currentShape.render()}
+
+        <text x="150" y="125" font-size="60" text-anchor="middle" fill="${currentShape.textColor}">${currentShape.text}</text>
+
+        </svg>
+    `
+
+    fs.writeFile('logo.svg', svgCode, (err) =>
+        err ? console.error(err) : console.log('SVG logo created')
+    )
 
 })
-}
 
-init();
+
+
+// function writeToFile(fileName, svg) {
+    
+//   }
+
+
+
+// function init() {
+//     inquirer.prompt(questions).then((inquirerResponses) => {
+//         writeToFile('logo.svg', generateShapes(inquirerResponses));
+// })
+// }
+
+// init();
