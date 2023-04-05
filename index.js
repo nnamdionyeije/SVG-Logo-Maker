@@ -23,10 +23,6 @@ inquirer
         type: 'input',
         name: 'textColor',
         message: 'Enter a text color',
-        // validate: function (input) {
-        //     //check for valid shape name or hex input
-        // }
-        //Validation isn't necessary, I can handle erroneous color input in the constructor.
     },
     {
         type: 'list',
@@ -38,13 +34,11 @@ inquirer
         type: 'input',
         name: 'shapeColor',
         message: 'Enter a shape color',
-        // validate: function (input) {
-        //     //check for valid shape name or hex input
-        // }
     }
 ])
 .then((data) => {
     let currentShape;
+    let textPlace = 'x="150" y="125" font-size="60"';
 
     switch (data.shape) {
         case 'circle':
@@ -53,6 +47,7 @@ inquirer
             // break;
         case 'triangle':
             currentShape = new triangle(data.text, data.textColor, data.shape, data.shapeColor);
+            textPlace = 'x="150" y="125" font-size="40"'
             break;
         case 'square':
             currentShape = new square(data.text, data.textColor, data.shape, data.shapeColor);
@@ -64,7 +59,7 @@ inquirer
 
         ${currentShape.render()}
 
-        <text x="150" y="125" font-size="60" text-anchor="middle" fill="${currentShape.textColor}">${currentShape.text}</text>
+        <text ${textPlace} text-anchor="middle" fill="${currentShape.textColor}">${currentShape.text}</text>
 
         </svg>
     `
@@ -73,20 +68,4 @@ inquirer
         err ? console.error(err) : console.log('SVG logo created')
     )
 
-})
-
-
-
-// function writeToFile(fileName, svg) {
-    
-//   }
-
-
-
-// function init() {
-//     inquirer.prompt(questions).then((inquirerResponses) => {
-//         writeToFile('logo.svg', generateShapes(inquirerResponses));
-// })
-// }
-
-// init();
+});
