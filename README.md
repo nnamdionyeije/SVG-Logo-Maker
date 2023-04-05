@@ -1,8 +1,8 @@
 # SVG-Logo-Maker
+
 ![License badge](https://img.shields.io/badge/license-MIT-red.svg)
 
 ## Description
-
 
 ## Table of Contents
 
@@ -18,19 +18,25 @@
 
 - [Tests](#tests)
 
+- [Demo Video Link](#demo-video-link)
+
 - [Questions](#questions)
 
 ## Screenshots
 
+![A screenshot of the SVG Logo Maker and the output](./images/SVG-Logo-Screenshot.png)
 
 ## Installation
 
+To install the necessary dependencies, run 'npm i' in the terminal.
 
 ## Usage
 
+To use the application after installing the necessary dependencies, run 'node index.js' in the terminal.
 
 ## License
 
+The license being used for this application is the MIT license.
 
 ## Contributing
 
@@ -38,9 +44,11 @@ N/A
 
 ## Tests
 
+Run 'npm run tests' in the terminal to perform the tests for this application.
 
 ## Demo Video Link
 
+https://youtu.be/9qRQmPrhYtw
 
 ## Questions
 
