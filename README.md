@@ -40,7 +40,7 @@ The license being used for this application is the MIT license.
 
 ## Contributing
 
-N/A
+Fellow cohort member Alyssa Geria helped me code the early portions of this project.
 
 ## Tests
 
